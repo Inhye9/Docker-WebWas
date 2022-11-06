@@ -1,0 +1,11 @@
+jeus.management.j2ee
+jeus.management.j2ee.ejb
+jeus.management.j2ee.library
+jeus.management.j2ee.servlet
+jeus.management.j2ee.statistics
+jeus.management.j2ee.thread
+jeus.management.j2ee.thread.stats
+jeus.management.j2ee.webservices
+jeus.management.snmp.agent
+jeus.server.service
+jeus.server.service.admin

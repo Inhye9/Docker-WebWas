@@ -1,0 +1,21 @@
+FROM parrotstream/centos-openjdk:8 
+
+# JEUS env variable.
+ENV INSTALL_HOME /home/tmax
+ENV JEUS_HOME /home/tmax/jeus8
+ENV DOMAIN_HOME /home/tmax/jeus8/domains/domain1
+ENV SCRIPT_HOME /home/tmax/script
+ENV PATH $JEUS_HOME/bin:$JEUS_HOME/lib:$PATH
+
+USER root
+
+WORKDIR /home/tmax
+
+COPY jeus ${INSTALL_HOME}
+
+# Install JEUS
+RUN \
+  chmod -R +x ${INSTALL_HOME} && \
+  ${JEUS_HOME}/lib/etc/ant/bin/ant -f ${JEUS_HOME}/setup/build.xml install 
+
+CMD ["/home/tmax/script/start.sh"]

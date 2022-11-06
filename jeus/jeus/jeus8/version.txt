@@ -1,0 +1,6 @@
+Copyright 2013-2018, TmaxSoft Co., Ltd. All Rights Reserved.
+
+Product: JEUS 8
+Version: 8 Fix#0
+Build: b266025
+Build Date: 10/14/2021
