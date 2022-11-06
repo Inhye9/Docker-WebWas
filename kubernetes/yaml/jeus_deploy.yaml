@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: jeus-deployment
+ labels:
+  app: jeus
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   app: jeus
+ template:
+  metadata:
+   labels:
+    app: jeus
+  spec:
+   serviceAccountName: jeususer
+   containers:
+   - name: jeus-container
+     #image: jangdndb/jeus8:b105067 
+     image: centos/jeus8:b266025
+     ports:
+      - containerPort: 8080
+     env:
+     - name: API_VERSION
+       value: "v1"
+     - name: TZ
+       value: "Asia/Seoul"
+     - name: KUBERNETES_NAMESPACE
+       value: "default"
+     - name: SCF_ID
+       value: "jeusscf"
