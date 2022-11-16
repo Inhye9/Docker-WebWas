@@ -1,0 +1,22 @@
+FROM parrotstream/centos-openjdk:8
+
+ENV INSTALL_HOME /home/tmax
+ENV WEBTOBDIR /home/tmax/webtob
+ENV WEBTOBCONFIG /home/tmax/webtob/config
+ENV SCRIPT_HOME /home/tmax/scripts
+ENV JAVA_HOME /usr
+ENV PATH $WEBTOBDIR/bin:$PATH
+ENV LD_LIBRARY_PATH $WEBTOBDIR/lib:$LD_LIBRARY_PATH
+
+
+USER root
+
+WORKDIR /home/tmax
+
+COPY webtob ${INSTALL_HOME}
+
+
+RUN \
+   chmod -R 755 ${INSTALL_HOME} 
+
+CMD ["/home/tmax/scripts/start.sh"]

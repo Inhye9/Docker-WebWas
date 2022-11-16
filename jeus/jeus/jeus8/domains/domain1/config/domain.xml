@@ -24,6 +24,7 @@
         <max-thread-pool-size>10</max-thread-pool-size>
         <min-thread-pool-size>0</min-thread-pool-size>
     </system-clustering-framework>
+    <enable-webadmin>false</enable-webadmin>
     <servers>
         <server>
             <name>%SERVERNAME%</name>
@@ -45,6 +46,9 @@
                     <keep-alive-timeout>600000</keep-alive-timeout>
                 </listener>
             </listeners>
+	    <use-web-engine>true</use-web-engine>
+	    <use-ejb-engine>false</use-ejb-engine>
+	    <use-jms-engine>false</use-jms-engine>
             <web-engine>
                 <blocked-url-patterns>
                     <deny-last-space-character>true</deny-last-space-character>
@@ -57,6 +61,9 @@
                     <decoded-pattern>#</decoded-pattern>
                     <decoded-pattern>\</decoded-pattern>
                 </blocked-url-patterns>
+		<jsp-engine>	
+ 		   <use-in-memory-compilation>false<use-in-memory-compilation>
+		</jsp-engine>	
                 <web-connections>
                     <http-listener>
                         <name>http</name>
@@ -67,6 +74,11 @@
                         </thread-pool>
                     </http-listener>
                 </web-connections>
+		<monitoring>
+		    <check-thread-pool>3000</check-thread-pool>	
+		    <check-class-reload>300000</check-class-reload>	
+		    <check-session>300000</check-session>	
+		</monitoring>
             </web-engine>
             <jms-engine>
                 <service-config>
