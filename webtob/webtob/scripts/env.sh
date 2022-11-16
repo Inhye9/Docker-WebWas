@@ -32,3 +32,11 @@ sed -i "s/%JEUS_DOMAIN%/${JEUS_DOMAIN}/g" ${WEBTOBDIR}/config/http.m
 
 #if [ -z $JEUS_DOMAIN ]; then export JEUS_DOMAIN="jeusfin.apps.test.5cab.sandbox1869.opentlc.com:80"; fi
 #sed -i "s/%JEUS_DOMAIN%/${JEUS_DOMAIN}/g" ${WEBTOBDIR}/config/http.m
+
+#Activate Reverse Proxy 
+if [ $JEUS_DOMAIN ]; then 
+	str=`grep -n bmt_proxy ${WEBTOBDIR}/config/http.m | awk '{print $1}' FS=":"`; 
+	end=$(($str+15)); 
+	sed -i -e "${str},${end}s:^#::" ${WEBTOBDIR}/config/http.m;
+	sed -i "s+%JEUS_DOMAIN%+${JEUS_DOMAIN}+g" ${WEBTOBDIR}/config/http.m 
+fi 

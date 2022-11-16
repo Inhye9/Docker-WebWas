@@ -18,6 +18,7 @@ webtob1
                 LOGPERM = 0644,
                 SYSLOG = "syslog"
 
+
 *VHOST
 bmt             DOCROOT = "%APP_DOCROOT%",
                 PORT = "%SERVICE_PORT%",
@@ -40,6 +41,7 @@ hth_worker
                   WorkerThreads=8
 
 
+
 *SVRGROUP
 htmlg           SVRTYPE = HTML
 #MyGroup        SVRTYPE = JSV, Vhostname = "MyGroup"
@@ -53,20 +55,24 @@ htmlg           SVRTYPE = HTML
 *ALIAS
 #bmt_alias      URI = "/shared/", RealPath = "%SHARED_DOCROOT%"
 
+
+
 *REVERSE_PROXY
-bmt_proxy       vhostName="bmt",
-                PathPrefix="/bmt",
-                ServerPathPrefix="/bmt",
-                RegExp = "!\/(static)",
-                #Options = "DynamicServerAddress",
-                ProxySSLFlag = Y,
-                ProxySSLName = proxy_ssl1,
-                ServerAddress="%JEUS_DOMAIN%",
-                MinPersistentServerConnections=1,
-                MaxPersistentServerConnections=30,
-                PersistentServerCheckTime=60,
-                PersistentServerTimeout=360,
-                PersistentServerCheckUrl="/healthcheck/check.html"
+#bmt_proxy       vhostName="bmt",
+#                PathPrefix="/bmt",
+#                ServerPathPrefix="/bmt",
+#                RegExp = "!\/(static)",
+#                #Options = "DynamicServerAddress",
+#                ProxySSLFlag = Y,
+#                ProxySSLName = proxy_ssl1,
+#                ServerAddress="%JEUS_DOMAIN%",
+#                MinPersistentServerConnections=1,
+#                MaxPersistentServerConnections=30,
+#                PersistentServerCheckTime=60,
+#                PersistentServerTimeout=360,
+#                PersistentServerCheckUrl="/healthcheck/check.html"
+
+
 
 *PROXY_SSL
 proxy_ssl1 	Verify=0
